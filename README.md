@@ -1,6 +1,8 @@
 # GyanSearch
 This is my search application where you can search for anything and search normally, search with voice, or search for AI-generated images. This app was powered with OpenAI's ChatGPT.
+
 ![image](https://user-images.githubusercontent.com/76403763/210676619-6b06515d-ee92-4253-9403-c360213a3856.png)
+
 Setting this program up for use is really easy, though you do need an account on OpenAI.
 
 <h3>How to set up the program</h3>
