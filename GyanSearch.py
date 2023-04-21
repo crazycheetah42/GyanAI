@@ -25,7 +25,7 @@ def add_api_key():
     space_lbl3 = ttk.Label(window, text="")
     space_lbl3.pack()
 
-    label3 = ttk.Label(window, text="Enter OpenAI API key here:")
+    label3 = ttk.Label(window, text="Enter your OpenAI API key here:")
     label3.pack()
     space_lbl4 = ttk.Label(window, text="")
     space_lbl4.pack()
