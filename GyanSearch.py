@@ -4,7 +4,8 @@ import openai
 import speech_recognition as sr
 
 openai_api_key = open("key.txt", "r").read().strip()
-if openai_api_key == "":
+
+def add_api_key():
     window = tk.Tk()
     window.geometry("630x430")
     window.iconbitmap("search.ico")
@@ -56,11 +57,11 @@ if openai_api_key == "":
     def open_link(url):
         import webbrowser
         webbrowser.open(url)
-    link.bind("<Button-1>", lambda e: open_link("https://www.google.com"))
+    link.bind("<Button-1>", lambda e: open_link("https://apps.aryatechspace.com/Gyan-Search/api_key.html"))
     link.config(foreground='blue')
     
     window.mainloop()
-else:
+def main_application():
     openai.api_key = openai_api_key
 
     def voice():
@@ -144,7 +145,11 @@ else:
     def open_link(url):
         import webbrowser
         webbrowser.open(url)
-    link1.bind("<Button-1>", lambda e: open_link("https://www.google.com"))
+    link1.bind("<Button-1>", lambda e: open_link("https://apps.aryatechspace.com/Gyan-Search/"))
     link1.config(foreground='blue')
 
     root.mainloop()
+if openai_api_key == "":
+    add_api_key()
+else:
+    main_application()
