@@ -89,7 +89,12 @@ def main_application():
         
         text_prompt = (f"User: {text}\n"
                     f"ChatGPT: ")
-        response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=0.5, max_tokens=1024, top_p=1, frequency_penalty=0, presence_penalty=0)
+        temp = 0.5
+        max_tkns = 1024
+        top_p = 1
+        freq_penalty = 0
+        pres_penalty = 0
+        response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
         response_text = response['choices'][0]['text']
 
         answer.delete(1.0, tk.END)
