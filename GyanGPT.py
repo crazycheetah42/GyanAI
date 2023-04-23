@@ -111,7 +111,7 @@ def main_application():
     regular = ttk.Frame(tabControl)
     txt_summarizer = ttk.Frame(tabControl)
     tabControl.add(regular, text='Regular')
-    tabControl.add(txt_summarizer, text='Text Summarizer (Beta)')
+    tabControl.add(txt_summarizer, text='Text Summarizer')
 
     header_lbl = ttk.Label(regular, text="GyanGPT", font=("Segoe UI", 22))
     header_lbl.pack()
@@ -181,12 +181,14 @@ def main_application():
                                             ("Text Document (*.txt)", ".txt"),
                                             ("All files", ".*")
                                           ])
+        if output is None:
+            return
         output_text = str(response_text)
         output.write(output_text)
         output.close()
 
     submit_btn2 = tk.PhotoImage(file="search.png")
-    submit_button2 = ttk.Button(txt_summarizer, image=submit_btn2, command=summarize)
+    submit_button2 = ttk.Button(txt_summarizer, zimage=submit_btn2, command=summarize)
     submit_button2.pack()
 
     input = tk.Text(txt_summarizer, height=28, width=132)
