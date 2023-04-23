@@ -102,10 +102,10 @@ def main_application():
 
     root = tk.Tk()
     root.geometry("1280x768")
-    root.wm_title("Gyan Search")
+    root.wm_title("GyanGPT")
     root.iconbitmap("search.ico")
 
-    header_lbl = ttk.Label(root, text="Gyan Search", font=("Segoe UI", 22))
+    header_lbl = ttk.Label(root, text="GyanGPT", font=("Segoe UI", 22))
     header_lbl.pack()
 
     var = tk.StringVar()
@@ -113,7 +113,7 @@ def main_application():
     space_lbl = ttk.Label(root, text="", font=("Segoe UI", 12))
     space_lbl.pack()
 
-    input_hint_lbl = ttk.Label(root, text="Enter prompt", font=("Segoe UI", 14))
+    input_hint_lbl = ttk.Label(root, text="Enter your prompt below", font=("Segoe UI", 14))
     input_hint_lbl.pack()
 
     prompt = ttk.Entry(root, textvariable=var, width=170)
