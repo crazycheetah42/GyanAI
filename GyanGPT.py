@@ -111,7 +111,7 @@ def main_application():
     regular = ttk.Frame(tabControl)
     txt_summarizer = ttk.Frame(tabControl)
     tabControl.add(regular, text='Regular')
-    tabControl.add(txt_summarizer, text='Text Summarizer')
+    tabControl.add(txt_summarizer, text='Text Summarizer (Beta)')
 
     header_lbl = ttk.Label(regular, text="GyanGPT", font=("Segoe UI", 22))
     header_lbl.pack()
@@ -161,16 +161,6 @@ def main_application():
     space_lbl2 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
     space_lbl2.pack()
 
-    submit_btn2 = tk.PhotoImage(file="search.png")
-    submit_button2 = ttk.Button(txt_summarizer, image=submit_btn2, command=summarize)
-    submit_button2.pack(side="left")
-
-    input = tk.Text(txt_summarizer, height=28, width=132)
-    input.pack()
-
-    space_lbl4 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
-    space_lbl4.pack()
-    
     def summarize():
         prompt = input.get("1.0",'end-1c')
 
@@ -185,7 +175,26 @@ def main_application():
         pres_penalty = 0
         response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
         response_text = response['choices'][0]['text']
-        print(response_text)
+        from tkinter import filedialog
+        output = filedialog.asksaveasfile(defaultextension='.txt',
+                                          filetypes=[
+                                            ("Text Document (*.txt)", ".txt"),
+                                            ("All files", ".*")
+                                          ])
+        output_text = str(response_text)
+        output.write(output_text)
+        output.close()
+
+    submit_btn2 = tk.PhotoImage(file="search.png")
+    submit_button2 = ttk.Button(txt_summarizer, image=submit_btn2, command=summarize)
+    submit_button2.pack()
+
+    input = tk.Text(txt_summarizer, height=28, width=132)
+    input.pack()
+
+    space_lbl4 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl4.pack()
+    
     
     space_lbl5 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
     space_lbl5.pack()
