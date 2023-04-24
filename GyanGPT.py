@@ -8,7 +8,7 @@ openai_api_key = open("key.txt", "r").read().strip()
 def add_api_key():
     window = tk.Tk()
     window.geometry("630x430")
-    window.iconbitmap("search.ico")
+    window.iconbitmap("main_icon.ico")
     window.wm_title("OpenAI API key")
 
     label = ttk.Label(window, text="OpenAI API key", font=("Segoe UI", 22))
@@ -103,7 +103,7 @@ def main_application():
     root = tk.Tk()
     root.geometry("1280x750")
     root.wm_title("GyanGPT")
-    root.iconbitmap("search.ico")
+    root.iconbitmap("main_icon.ico")
 
     tabControl = ttk.Notebook(root)
     tabControl.pack(fill="both", expand=1)
@@ -187,9 +187,11 @@ def main_application():
         output.write(output_text)
         output.close()
 
-    submit_btn2 = tk.PhotoImage(file="search.png")
-    submit_button2 = ttk.Button(txt_summarizer, zimage=submit_btn2, command=summarize)
+    submit_button2 = ttk.Button(txt_summarizer, text="Summarize", command=summarize)
     submit_button2.pack()
+
+    space_lbl3 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl3.pack()
 
     input = tk.Text(txt_summarizer, height=28, width=132)
     input.pack()
