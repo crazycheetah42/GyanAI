@@ -124,6 +124,8 @@ def main_application():
     input_hint_lbl.pack()
     prompt = ttk.Entry(regular, textvariable=var, width=170)
     prompt.pack()
+    space_lbl2 = ttk.Label(code_writer, text="", font=("Segoe UI", 4))
+    space_lbl2.pack()
     submit_btn = tk.PhotoImage(file="search.png")
     btn_frame = tk.LabelFrame(regular)
     btn_frame.pack()
@@ -207,6 +209,31 @@ def main_application():
 
     header_lbl = ttk.Label(code_writer, text="Code Writer", font=("Segoe UI", 22))
     header_lbl.pack()
+
+    var3 = tk.StringVar()
+    space_lbl = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
+    space_lbl.pack()
+    input_hint_lbl = ttk.Label(code_writer, text="Enter your prompt below", font=("Segoe UI", 14))
+    input_hint_lbl.pack()
+    prompt = ttk.Entry(code_writer, textvariable=var3, width=170)
+    prompt.pack()
+    def code():
+        pass
+    space_lbl2 = ttk.Label(code_writer, text="", font=("Segoe UI", 4))
+    space_lbl2.pack()
+    submit_btn_2 = tk.PhotoImage(file="Code.png")
+    submit_button = ttk.Button(code_writer, image=submit_btn_2, command=code)
+    submit_button.pack()
+    space_lbl2 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
+    space_lbl2.pack()
+    space_lbl3 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
+    space_lbl3.pack()
+    answer = tk.Text(code_writer, height=25, width=120)
+    answer.pack(pady=5)
+    space_lbl4 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
+    space_lbl4.pack()
+    space_lbl5 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
+    space_lbl5.pack()
 
     root.mainloop()
 if openai_api_key == "":
