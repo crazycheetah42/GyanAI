@@ -8,5 +8,5 @@ You can download GyanGPT by going into the Releases and downloading the latest v
 If you want to contribute and suggest changes, they must apply with the following:
 
 * It should improve some part of GyanGPT
-* It should be documented
+* It should be documented (explain what the code does)
 * It should work with the rest of GyanGPT (if it's for one part of GyanGPT)
