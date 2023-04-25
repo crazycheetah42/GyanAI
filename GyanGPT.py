@@ -110,8 +110,10 @@ def main_application():
 
     regular = ttk.Frame(tabControl)
     txt_summarizer = ttk.Frame(tabControl)
+    code_writer = ttk.Frame(tabControl)
     tabControl.add(regular, text='Regular')
     tabControl.add(txt_summarizer, text='Text Summarizer')
+    tabControl.add(code_writer, text="Code Writer")
 
     header_lbl = ttk.Label(regular, text="GyanGPT", font=("Segoe UI", 22))
     header_lbl.pack()
@@ -202,6 +204,9 @@ def main_application():
     
     space_lbl5 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
     space_lbl5.pack()
+
+    header_lbl = ttk.Label(code_writer, text="Code Writer", font=("Segoe UI", 22))
+    header_lbl.pack()
 
     root.mainloop()
 if openai_api_key == "":
