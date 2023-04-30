@@ -191,7 +191,7 @@ def main_application():
         output.write(output_text)
         output.close()
 
-    submit_button2 = ttk.Button(txt_shortener, text="shorten", command=shorten)
+    submit_button2 = ttk.Button(txt_shortener, text="Shorten", command=shorten)
     submit_button2.pack()
 
     space_lbl3 = ttk.Label(txt_shortener, text="", font=("Segoe UI", 12))
