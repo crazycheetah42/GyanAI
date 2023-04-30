@@ -109,10 +109,10 @@ def main_application():
     tabControl.pack(fill="both", expand=1)
 
     regular = ttk.Frame(tabControl)
-    txt_summarizer = ttk.Frame(tabControl)
+    txt_shortener = ttk.Frame(tabControl)
     code_writer = ttk.Frame(tabControl)
     tabControl.add(regular, text='Regular')
-    tabControl.add(txt_summarizer, text='Text Summarizer')
+    tabControl.add(txt_shortener, text='Text Shortener')
     tabControl.add(code_writer, text="Code Writer")
 
     header_lbl = ttk.Label(regular, text="GyanGPT", font=("Segoe UI", 22))
@@ -152,23 +152,23 @@ def main_application():
     link1.bind("<Button-1>", lambda e: open_link("https://apps.aryatechspace.com/Gyan-Search/"))
     link1.config(foreground='blue')
 
-    header_lbl = ttk.Label(txt_summarizer, text="Text Summarizer", font=("Segoe UI", 22))
+    header_lbl = ttk.Label(txt_shortener, text="Text Shortener", font=("Segoe UI", 22))
     header_lbl.pack()
 
     var2 = tk.StringVar()
-    space_lbl = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl = ttk.Label(txt_shortener, text="", font=("Segoe UI", 12))
     space_lbl.pack()
 
-    input_hint_lbl = ttk.Label(txt_summarizer, text="Enter text to summarize", font=("Segoe UI", 14))
+    input_hint_lbl = ttk.Label(txt_shortener, text="Enter text to shorten", font=("Segoe UI", 14))
     input_hint_lbl.pack()
 
-    space_lbl2 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl2 = ttk.Label(txt_shortener, text="", font=("Segoe UI", 12))
     space_lbl2.pack()
 
-    def summarize():
+    def shorten():
         prompt = input.get("1.0",'end-1c')
 
-        final_prompt = "Summarize this text:\n\n" + prompt
+        final_prompt = "Shorten this text:\n\n" + prompt
         
         text_prompt = (f"User: {final_prompt}\n"
                     f"ChatGPT: ")
@@ -191,20 +191,20 @@ def main_application():
         output.write(output_text)
         output.close()
 
-    submit_button2 = ttk.Button(txt_summarizer, text="Summarize", command=summarize)
+    submit_button2 = ttk.Button(txt_shortener, text="shorten", command=shorten)
     submit_button2.pack()
 
-    space_lbl3 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl3 = ttk.Label(txt_shortener, text="", font=("Segoe UI", 12))
     space_lbl3.pack()
 
-    input = tk.Text(txt_summarizer, height=28, width=132)
+    input = tk.Text(txt_shortener, height=28, width=132)
     input.pack()
 
-    space_lbl4 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl4 = ttk.Label(txt_shortener, text="", font=("Segoe UI", 12))
     space_lbl4.pack()
     
     
-    space_lbl5 = ttk.Label(txt_summarizer, text="", font=("Segoe UI", 12))
+    space_lbl5 = ttk.Label(txt_shortener, text="", font=("Segoe UI", 12))
     space_lbl5.pack()
 
     header_lbl = ttk.Label(code_writer, text="Code Writer", font=("Segoe UI", 22))
