@@ -211,25 +211,49 @@ def main_application():
     header_lbl.pack()
 
     var3 = tk.StringVar()
+    var4 = tk.StringVar()
     space_lbl = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
     space_lbl.pack()
-    input_hint_lbl = ttk.Label(code_writer, text="Enter your prompt below", font=("Segoe UI", 14))
+    input_hint_lbl = ttk.Label(code_writer, text="Type programming language and the type of program you would like to create", font=("Segoe UI", 14))
     input_hint_lbl.pack()
-    prompt = ttk.Entry(code_writer, textvariable=var3, width=170)
+    prompt = ttk.Entry(code_writer, textvariable=var3, width=8)
     prompt.pack()
+    prompt2 = ttk.Entry(code_writer, textvariable=var4, width=170)
+    prompt2.pack()
     def code():
-        pass
+        programming_lang = var3.get()
+        program = var4.get()
+        final_prompt = "Write " + programming_lang + " code to make this app: " + program
+        
+        text_prompt = (f"User: {final_prompt}\n"
+                    f"ChatGPT: ")
+        temp = 0.5
+        max_tkns = 1024
+        top_p = 1
+        freq_penalty = 0
+        pres_penalty = 0
+        response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
+        response_text = response['choices'][0]['text']
+        from tkinter import filedialog
+        output = filedialog.asksaveasfile(defaultextension='.*',
+                                          filetypes=[
+                                            ("All files", ".*")
+                                          ])
+        if output is None:
+            return
+        output_text = str(response_text)
+        output.write(output_text)
+        output.close()
+
     space_lbl2 = ttk.Label(code_writer, text="", font=("Segoe UI", 4))
     space_lbl2.pack()
-    submit_btn_2 = tk.PhotoImage(file="Code.png")
+    submit_btn_2 = tk.PhotoImage(file="code-25.png")
     submit_button = ttk.Button(code_writer, image=submit_btn_2, command=code)
     submit_button.pack()
     space_lbl2 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
     space_lbl2.pack()
     space_lbl3 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
     space_lbl3.pack()
-    answer = tk.Text(code_writer, height=25, width=120)
-    answer.pack(pady=5)
     space_lbl4 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
     space_lbl4.pack()
     space_lbl5 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
