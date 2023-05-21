@@ -111,9 +111,11 @@ def main_application():
     regular = ttk.Frame(tabControl)
     txt_shortener = ttk.Frame(tabControl)
     code_writer = ttk.Frame(tabControl)
+    blog_writer = ttk.Frame(tabControl)
     tabControl.add(regular, text='Regular')
     tabControl.add(txt_shortener, text='Text Shortener')
     tabControl.add(code_writer, text="Code Writer")
+    tabControl.add(blog_writer, text="Blog Writer")
 
     header_lbl = ttk.Label(regular, text="GyanGPT", font=("Segoe UI", 22))
     header_lbl.pack()
