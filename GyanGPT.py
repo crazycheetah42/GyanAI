@@ -264,6 +264,21 @@ def main_application():
     header_lbl = ttk.Label(blog_writer, text="Code Writer", font=("Segoe UI", 22))
     header_lbl.pack()
 
+    def write_blog():
+        blog_description = var4.get()
+        final_prompt = 'Write a blog post for: "' + blog_description + '"'
+        
+        text_prompt = (f"User: {final_prompt}\n"
+                    f"ChatGPT: ")
+        temp = 0.5
+        max_tkns = 1024
+        top_p = 1
+        freq_penalty = 0
+        pres_penalty = 0
+        response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
+        response_text = response['choices'][0]['text']
+        answer.insert("1.0", response_text)
+
     var3 = tk.StringVar()
     var4 = tk.StringVar()
     space_lbl = ttk.Label(blog_writer, text="", font=("Segoe UI", 12))
@@ -278,20 +293,6 @@ def main_application():
     space_lbl2.pack()
     answer = tk.Text(blog_writer, height=25, width=120)
     answer.pack(pady=5)
-    def write_blog():
-        blog_description = var4.get()
-        final_prompt = "Write a blog for: " + blog_description
-        
-        text_prompt = (f"User: {final_prompt}\n"
-                    f"ChatGPT: ")
-        temp = 0.5
-        max_tkns = 1024
-        top_p = 1
-        freq_penalty = 0
-        pres_penalty = 0
-        response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
-        response_text = response['choices'][0]['text']
-        answer.insert("1.0", response_text)
 
     root.mainloop()
 if openai_api_key == "":
