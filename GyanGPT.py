@@ -277,7 +277,7 @@ def main_application():
         pres_penalty = 0
         response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
         response_text = response['choices'][0]['text']
-        answer.insert("1.0", response_text)
+        blog_answer.insert("1.0", response_text)
 
     var3 = tk.StringVar()
     var4 = tk.StringVar()
@@ -291,8 +291,8 @@ def main_application():
     blog_write_btn.pack()
     space_lbl2 = ttk.Label(blog_writer, text="", font=("Segoe UI", 4))
     space_lbl2.pack()
-    answer = tk.Text(blog_writer, height=25, width=120)
-    answer.pack(pady=5)
+    blog_answer = tk.Text(blog_writer, height=25, width=120)
+    blog_answer.pack(pady=5)
 
     root.mainloop()
 if openai_api_key == "":
