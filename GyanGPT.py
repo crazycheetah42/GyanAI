@@ -115,7 +115,7 @@ def main_application():
     tabControl.add(regular, text='Regular')
     tabControl.add(txt_shortener, text='Text Shortener')
     tabControl.add(code_writer, text="Code Writer")
-    tabControl.add(blog_writer, text="Blog Writer")
+    tabControl.add(blog_writer, text="Blog Post Writer")
 
     header_lbl = ttk.Label(regular, text="GyanGPT", font=("Segoe UI", 22))
     header_lbl.pack()
@@ -261,7 +261,7 @@ def main_application():
     space_lbl5 = ttk.Label(code_writer, text="", font=("Segoe UI", 12))
     space_lbl5.pack()
     # Blog Writer
-    header_lbl = ttk.Label(blog_writer, text="Code Writer", font=("Segoe UI", 22))
+    header_lbl = ttk.Label(blog_writer, text="Blog Post Writer", font=("Segoe UI", 22))
     header_lbl.pack()
 
     def write_blog():
