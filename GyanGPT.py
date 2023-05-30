@@ -225,7 +225,7 @@ def main_application():
     def code():
         programming_lang = var3.get()
         program = var4.get()
-        final_prompt = "Write " + programming_lang + " code to make this app: " + program
+        final_prompt = "Write " + programming_lang + " code to make this app: " + program + ". Give only the code and do not give any explanation."
         
         text_prompt = (f"User: {final_prompt}\n"
                     f"ChatGPT: ")
