@@ -2,65 +2,11 @@ import tkinter as tk
 from tkinter import ttk
 import openai
 import speech_recognition as sr
+import bardapi
 
-openai_api_key = open("key.txt", "r").read().strip()
+openai_api_key = open("openai.txt", "r").read().strip()
+bard_api_key = open("bard.txt", "r").read().strip()
 
-def add_api_key():
-    window = tk.Tk()
-    window.geometry("630x430")
-    window.iconbitmap("main_icon.ico")
-    window.wm_title("OpenAI API key")
-
-    label = ttk.Label(window, text="OpenAI API key", font=("Segoe UI", 22))
-    label.pack()
-
-    space_lbl = ttk.Label(window, text="")
-    space_lbl.pack()
-
-    label2 = ttk.Label(window, text="An OpenAI API key is required to proceed. Proceeding without an API key will cause errors while using the app.")
-    label2.pack()
-
-    space_lbl2 = ttk.Label(window, text="")
-    space_lbl2.pack()
-    space_lbl3 = ttk.Label(window, text="")
-    space_lbl3.pack()
-
-    label3 = ttk.Label(window, text="Enter your OpenAI API key here:")
-    label3.pack()
-    space_lbl4 = ttk.Label(window, text="")
-    space_lbl4.pack()
-
-    var = tk.StringVar()
-    new_api_key = ttk.Entry(window, textvariable=var, width=75)
-    new_api_key.pack()
-
-    def write_api_key_to_file():
-        api_key = var.get()
-        key_file = open("key.txt", "w")
-        key_file.write(api_key)
-        window.destroy()
-        from tkinter import messagebox
-        messagebox.showinfo("API key added", "The OpenAI API key has been added. You may now restart the program.")
-
-    space_lbl5 = ttk.Label(window, text="")
-    space_lbl5.pack()
-    button = ttk.Button(window, text="OK", command=write_api_key_to_file)
-    button.pack()
-
-    space_lbl6 = ttk.Label(window, text="")
-    space_lbl6.pack()
-    space_lbl7 = ttk.Label(window, text="")
-    space_lbl7.pack()
-
-    link = ttk.Label(window, text="See how to generate an API key", cursor="hand2")
-    link.pack()
-    def open_link(url):
-        import webbrowser
-        webbrowser.open(url)
-    link.bind("<Button-1>", lambda e: open_link("https://apps.aryatechspace.com/Gyan-Search/api_key.html"))
-    link.config(foreground='blue')
-    
-    window.mainloop()
 def main_application():
     openai.api_key = openai_api_key
 
@@ -85,20 +31,21 @@ def main_application():
             print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
     def search():
-        text = var.get()
+        prompt = var.get()
+        bard = bardapi.Bard(token=bard_api_key)
+        bard_result = bard.get_answer(prompt)['content']
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                    {"role": "system", "content": "Act as an AI chatbot with access to the internet."},
+                    {"role": "user", "content": "Provide a well structured and easily readable text by analyzing this: The first content below is the user's query and the second content below is the result obtained by accessing the internet with the help of google's search alogoritm. Provide the well structured and good mannered answer by processing the user's query and the result from Google search algorithm. /n"+prompt+' /n '+ bard_result}
         
-        text_prompt = (f"User: {text}\n"
-                    f"ChatGPT: ")
-        temp = 0.5
-        max_tkns = 1024
-        top_p = 1
-        freq_penalty = 0
-        pres_penalty = 0
-        response = openai.Completion.create(engine="text-davinci-003", prompt=text_prompt, temperature=temp, max_tokens=max_tkns, top_p=top_p, frequency_penalty=freq_penalty, presence_penalty=pres_penalty)
-        response_text = response['choices'][0]['text']
+                    ]
+        )
+        final_response = completion["choices"][0]["message"]["content"]
 
         answer.delete(1.0, tk.END)
-        answer.insert(1.0, response_text)
+        answer.insert(1.0, final_response)
 
     root = tk.Tk()
     root.geometry("1280x750")
@@ -295,7 +242,5 @@ def main_application():
     blog_answer.pack(pady=5)
 
     root.mainloop()
-if openai_api_key == "":
-    add_api_key()
-else:
+if __name__ == "__main__":
     main_application()
