@@ -7,6 +7,9 @@ import bardapi
 openai_api_key = open("openai.txt", "r").read().strip()
 bard_api_key = open("bard.txt", "r").read().strip()
 
+def add_key():
+    pass
+
 def main_application():
     openai.api_key = openai_api_key
 
@@ -242,5 +245,12 @@ def main_application():
     blog_answer.pack(pady=5)
 
     root.mainloop()
+    
+def check():
+    if openai_api_key == "" or bard_api_key = "" or bard_api_key and openai_api_key == "":
+    	add_key()
+    else:
+    	main_application()
+    
 if __name__ == "__main__":
-    main_application()
+    check()
