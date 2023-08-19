@@ -25,7 +25,6 @@ chat_lbl = ttk.Label(chat, text="Chat", font=("Segoe UI", 18))
 chat_lbl.pack()
 cHintLbl = ttk.Label(chat, text="Enter your prompt below", font=("Segoe UI", 14))
 cHintLbl.pack()
-# This is for the prompt.
 cPrompt = ttk.Entry(chat, textvariable=cPromptVar)
 # This code packs the prompt into the tkinter window. The fill parameter tells tkinter to stretch the prompt to the edge of the window.
 cPrompt.pack(fill="x")
