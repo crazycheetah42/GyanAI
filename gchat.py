@@ -1,11 +1,19 @@
 # Import the necessary modules needed for the GyanAI Chat function
-import bardapi
+import replicate, os
 
-# Setup Bard API and store the result of the prompt
-bKey = open("bard.txt", "r").read().strip()
-bard = bardapi.Bard(token=bKey)
-
+# Setup LLaMa API and add it to the environment variables
+rkey = open("key.txt", 'r').read().strip()
+os.environ["REPLICATE_API_TOKEN"] = rkey
 
 def cGenerate(prompt):
-    bard_result = bard.get_answer(prompt)['content']
-    return bard_result
+    prompt_input = prompt
+    output = replicate.run(
+    "replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781",
+    input={"prompt": prompt_input}
+        )
+    full_response = ""
+
+    for item in output:
+        # https://replicate.com/replicate/llama-2-70b-chat/versions/58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781/api#output-schema
+        full_response += item
+    return full_response
