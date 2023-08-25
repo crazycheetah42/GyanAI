@@ -8,12 +8,7 @@ import os
 root = tk.Tk()
 root.wm_title("GyanAI")
 root.geometry("1280x768")
-# Only show the bitmap icon if the os is Windows, because Linux gives errors
-if os.name == "nt":
-    root.iconbitmap("main_icon.ico")
-else:
-    pass
-
+root.iconbitmap("main_icon.ico")
 # Add the basic tkinter skeleton
 gHeader = ttk.Label(root, text="GyanAI", font=("Segoe UI", 24))
 gHeader.pack()
