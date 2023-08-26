@@ -2,7 +2,6 @@
 import tkinter as tk
 from tkinter import ttk
 import speech_recognition as sr
-import os
 
 # Setup the basic tkinter window
 root = tk.Tk()
