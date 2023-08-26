@@ -1,3 +1,8 @@
+"""
+GyanAI is open-source, and it uses the replicate model. This is the main file (made for Windows) with the UI and function calls. Please feel free to contribute changes. 
+Read the README for more info.
+"""
+
 # Import the necessary modules for the main program
 import tkinter as tk
 from tkinter import ttk
