@@ -7,7 +7,6 @@ import speech_recognition as sr
 root = tk.Tk()
 root.wm_title("GyanAI")
 root.geometry("1280x768")
-root.iconbitmap("main_icon.ico")
 # Add the basic tkinter skeleton
 gHeader = ttk.Label(root, text="GyanAI", font=("Segoe UI", 24))
 gHeader.pack()
