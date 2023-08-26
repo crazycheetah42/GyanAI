@@ -8,22 +8,22 @@ root = tk.Tk()
 root.wm_title("GyanAI")
 root.geometry("1280x768")
 # Add the basic tkinter skeleton
-gHeader = ttk.Label(root, text="GyanAI", font=("Segoe UI", 24))
+gHeader = tk.Label(root, text="GyanAI", font=("Segoe UI", 24))
 gHeader.pack()
 gTabWidget = ttk.Notebook(root)
 gTabWidget.pack(fill="both", expand=1)
 
 # Add the Chat tab to the tab widget
-chat = ttk.Frame(gTabWidget)
+chat = tk.Frame(gTabWidget)
 gTabWidget.add(chat, text='Chat')
 
 # Add the widgets to the chat tab
 cPromptVar = tk.StringVar()
-chat_lbl = ttk.Label(chat, text="Chat", font=("Segoe UI", 18))
+chat_lbl = tk.Label(chat, text="Chat", font=("Segoe UI", 18))
 chat_lbl.pack()
-cHintLbl = ttk.Label(chat, text="Enter your prompt below", font=("Segoe UI", 14))
+cHintLbl = tk.Label(chat, text="Enter your prompt below", font=("Segoe UI", 14))
 cHintLbl.pack()
-cPrompt = ttk.Entry(chat, textvariable=cPromptVar)
+cPrompt = tk.Entry(chat, textvariable=cPromptVar)
 # This code packs the prompt into the tkinter window. The fill parameter tells tkinter to stretch the prompt to the edge of the window.
 cPrompt.pack(fill="x")
 # Add the function for generation in the chat function
@@ -40,13 +40,13 @@ cAnswer = tk.Text(chat)
 cAnswer.pack(fill="both")
 
 # Add shorten text tab to tabWidget
-shortenText = ttk.Frame(gTabWidget)
+shortenText = tk.Frame(gTabWidget)
 gTabWidget.add(shortenText, text='Shorten Text')
 
 # Add widgets for the shorten text function
-sHeader = ttk.Label(shortenText, text='Shorten Text', font=("Segoe UI", 18))
+sHeader = tk.Label(shortenText, text='Shorten Text', font=("Segoe UI", 18))
 sHeader.pack()
-sHintLbl = ttk.Label(shortenText, text="Enter your text below", font=("Segoe UI", 14))
+sHintLbl = tk.Label(shortenText, text="Enter your text below", font=("Segoe UI", 14))
 sHintLbl.pack()
 sText = tk.Text(shortenText)
 sText.pack(fill="both")
