@@ -1,6 +1,5 @@
 # Import the necessary modules needed for the GyanAI Chat function
-import replicate, os
-import main_function
+import os, main_function
 
 # Setup LLaMa API and add it to the environment variables as it's needed for the replicate model to run
 rkey = open("key.txt", 'r').read().strip()
