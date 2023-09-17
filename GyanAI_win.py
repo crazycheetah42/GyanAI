@@ -6,7 +6,6 @@ Read the README for more info.
 # Import the necessary modules for the main program
 import tkinter as tk
 from tkinter import ttk
-import speech_recognition as sr
 
 def main_application():
     # Setup the basic tkinter window
@@ -106,7 +105,7 @@ def api_keys_add():
 
         r_key_file.write(new_r_key)
         o_key_file.write(new_o_key)
-        
+
     submit_btn = ttk.Button(window, text="Add API Keys", command=add_keys)
     submit_btn.pack()
     
