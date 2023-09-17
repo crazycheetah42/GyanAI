@@ -99,7 +99,14 @@ def api_keys_add():
     oKey = ttk.Entry(window, textvariable=okeyVar)
     oKey.pack()
     def add_keys():
-        pass
+        new_r_key = rkeyVar.get()
+        new_o_key = okeyVar.get()
+        r_key_file = open("key.txt", "w")
+        o_key_file = open("openai.txt", "w")
+
+        r_key_file.write(new_r_key)
+        o_key_file.write(new_o_key)
+        
     submit_btn = ttk.Button(window, text="Add API Keys", command=add_keys)
     submit_btn.pack()
     
