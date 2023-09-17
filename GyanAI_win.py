@@ -81,7 +81,33 @@ def api_keys_add():
     window.geometry("1024x768")
     window.wm_title("Add API Keys")
 
-    heading = ttk.Button(window, text="Add API Keys")
+    heading = ttk.Label(window, text="Add API Keys", font=("Segoe UI", 24))
     heading.pack()
 
+    label = ttk.Label(window, text="Please add a Replicate and OpenAI API key.")
+    label.pack()
+
+    rKeyHint = ttk.Label(window, text="Enter Replicate API Key")
+    rKeyHint.pack()
+    rkeyVar = tk.StringVar()
+    rKey = ttk.Entry(window, textvariable=rkeyVar)
+    rKey.pack()
+
+    oKeyHint = ttk.Label(window, text="Enter OpenAI API Key")
+    oKeyHint.pack()
+    okeyVar = tk.StringVar()
+    oKey = ttk.Entry(window, textvariable=okeyVar)
+    oKey.pack()
+    def add_keys():
+        pass
+    submit_btn = ttk.Button(window, text="Add API Keys", command=add_keys)
+    submit_btn.pack()
     
+    window.mainloop()
+if __name__ == "__main__":
+    with open("key.txt", "r") as r:
+        with open("openai.txt", "r") as o:
+            rkey = r.read().strip()
+            okey = o.read().strip()
+            if rkey == "" or okey == "" or rkey == "" and okey == "":
+                api_keys_add()
