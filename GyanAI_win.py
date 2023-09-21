@@ -117,3 +117,5 @@ if __name__ == "__main__":
             okey = o.read().strip()
             if rkey == "" or okey == "" or rkey == "" and okey == "":
                 api_keys_add()
+            else:
+                main_application()
