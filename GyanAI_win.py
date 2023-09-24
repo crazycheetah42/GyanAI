@@ -100,8 +100,8 @@ def api_keys_add():
     def add_keys():
         new_r_key = rkeyVar.get()
         new_o_key = okeyVar.get()
-        r_key_file = open("key.txt", "w")
-        o_key_file = open("openai.txt", "w")
+        r_key_file = open("config/key.txt", "w")
+        o_key_file = open("config/openai.txt", "w")
 
         r_key_file.write(new_r_key)
         o_key_file.write(new_o_key)
@@ -111,8 +111,8 @@ def api_keys_add():
     
     window.mainloop()
 if __name__ == "__main__":
-    with open("key.txt", "r") as r:
-        with open("openai.txt", "r") as o:
+    with open("config/key.txt", "r") as r:
+        with open("config/openai.txt", "r") as o:
             rkey = r.read().strip()
             okey = o.read().strip()
             if rkey == "" or okey == "" or rkey == "" and okey == "":
