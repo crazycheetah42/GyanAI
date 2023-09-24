@@ -2,7 +2,7 @@
 import functions.main_function as main_function, os
 
 # Setup LLaMa API and add it to the environment variables
-rkey = open("key.txt", 'r').read().strip()
+rkey = open("config/key.txt", 'r').read().strip()
 os.environ["REPLICATE_API_TOKEN"] = rkey
 
 def sShorten(prompt):
