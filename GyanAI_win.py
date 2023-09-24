@@ -34,7 +34,7 @@ def main_application():
     cPrompt.pack(fill="x")
     # Add the function for generation in the chat function
     def cSubmit():
-        import gchat
+        import functions.gchat as gchat
         cPrompt = cPromptVar.get()
         cResult = gchat.cGenerate(cPrompt)
         cAnswer.delete(1.0, tk.END)
@@ -58,7 +58,7 @@ def main_application():
     sText.pack(fill="both")
     # Add the function for generation in the shortenText function
     def sShorten():
-        import gshorten
+        import functions.gshorten as gshorten
         sPrompt = sText.get(1.0, tk.END)
         sResult = gshorten.sGenerate(sPrompt)
         from tkinter import filedialog

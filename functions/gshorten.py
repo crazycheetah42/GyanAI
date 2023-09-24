@@ -1,5 +1,5 @@
 # Import the necessary modules needed for the GyanAI Shorten function
-import main_function, os
+import functions.main_function as main_function, os
 
 # Setup LLaMa API and add it to the environment variables
 rkey = open("key.txt", 'r').read().strip()
