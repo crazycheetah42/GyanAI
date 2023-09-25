@@ -1,4 +1,6 @@
 # GyanAI
 
 GyanAI is an AI assistant powered by the LLaMA 2 model made by Meta.
-I would appreciate contributions to this project to make it the best it can possibly be. This project is in active development.
+It is built in Python, and is available for Windows and Linux. It has a main chat feature, which is the same as chatting with a bot as Claude, ChatGPT, or Bard. It sends your input from the smaller input box to LLaMa 2 and gets the output. It sends the output to the big output text box below. It also has a shorten text feature that uses LLaMa 2 to shorten any text that you input from the main text box. Once you click Shorten Text, it sends the text to LLaMa 2 and it tells it to shorten the text. Once it recieves the output, it saves it to a file.
+
+To download this program, click on the latest release under the 'Releases' tab in GitHub. Then, choose the zip/executable for your OS. Extract the zip if needed and then run the main executable file. On Windows, it will generally be named something like "GyanAI_win.exe" or on Linux, it will be named "GyanAI_lin". If you would like to support this project, please fork and contribute to GyanAI on GitHub.
