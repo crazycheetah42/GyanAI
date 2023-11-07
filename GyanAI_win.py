@@ -21,11 +21,11 @@ def main_application():
 
     # Add the Chat tab to the tab widget
     chat = ttk.Frame(gTabWidget)
-    gTabWidget.add(chat, text='Chat')
+    gTabWidget.add(chat, text='LLaMa 2')
 
     # Add the widgets to the chat tab
     cPromptVar = tk.StringVar()
-    chat_lbl = ttk.Label(chat, text="Chat", font=("Segoe UI", 18))
+    chat_lbl = ttk.Label(chat, text="LLaMa 2", font=("Segoe UI", 18))
     chat_lbl.pack()
     cHintLbl = ttk.Label(chat, text="Enter your prompt below", font=("Segoe UI", 14))
     cHintLbl.pack()
