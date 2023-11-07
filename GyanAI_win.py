@@ -68,9 +68,30 @@ def main_application():
             )
         with open(filename, "w") as f:
             f.write(sResult)
-    cSubmitBtn = ttk.Button(shortenText, text="Submit", command=sShorten)
-    cSubmitBtn.pack()
+    sSubmitBtn = ttk.Button(shortenText, text="Submit", command=sShorten)
+    sSubmitBtn.pack()
 
+    code = ttk.Frame(gTabWidget)
+    gTabWidget.add(code, text="Code (GPT-3.5-turbo)")
+    # Add widgets for the code function
+    cgPromptVar = tk.StringVar()
+    cgHeader = ttk.Label(code, text="Code Generator", font=("Segoe UI", 18))
+    cgHeader.pack()
+    cgHintLbl = ttk.Label(code, text="Chat with GPT", font=("Segoe UI", 14))
+    cgHintLbl.pack()
+    cgPrompt = ttk.Entry(code, textvariable=cgPromptVar)
+    cgPrompt.pack(fill="x")
+    # Add the function for generation in the code function
+    def cgSubmit():
+        import functions.gcode as gcode
+        cgPrompt = cgPromptVar.get()
+        cgResult = gcode.cgGenerate(cgPrompt)
+        cgAnswer.delete(1.0, tk.END)
+        cgAnswer.insert(1.0, cgResult)
+    cgSubmitBtn = ttk.Button(code, text="Submit", command=cgSubmit)
+    cgSubmitBtn.pack()
+    cgAnswer = tk.Text(code)
+    cgAnswer.pack(fill="both")
 
     # Configure the tkinter window to run until the user closes the program
     root.mainloop()
