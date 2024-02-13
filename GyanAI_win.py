@@ -6,6 +6,10 @@ Read the README for more info.
 # Import the necessary modules for the main program
 import tkinter as tk
 from tkinter import ttk
+import sv_ttk
+import darkdetect
+
+
 
 def main_application():
     # Setup the basic tkinter window
@@ -13,7 +17,10 @@ def main_application():
     root.wm_title("GyanAI")
     root.geometry("1280x768")
     root.iconbitmap("main_icon.ico")
-    # Add the basic tkinter skeleton
+    if darkdetect.isDark():
+        sv_ttk.set_theme("dark")
+    elif darkdetect.isLight():
+        sv_ttk.set_theme("light")
     gHeader = ttk.Label(root, text="GyanAI", font=("Segoe UI", 24))
     gHeader.pack()
     gTabWidget = ttk.Notebook(root)
@@ -100,7 +107,10 @@ def api_keys_add():
     window = tk.Tk()
     window.geometry("1024x768")
     window.wm_title("Add API Keys")
-
+    if darkdetect.isDark():
+        sv_ttk.set_theme("dark")
+    elif darkdetect.isLight():
+        sv_ttk.set_theme("light")
     heading = ttk.Label(window, text="Add API Keys", font=("Segoe UI", 24))
     heading.pack()
 
